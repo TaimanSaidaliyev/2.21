@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Posts.views import show_list_posts
+from Posts.views import show_list_posts, add_animal_breed
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('posts/', show_list_posts)
+    path('admin/', admin.site.urls, name='main_page'),
+    path('posts/', show_list_posts),
+    path('posts/add/', add_animal_breed)
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

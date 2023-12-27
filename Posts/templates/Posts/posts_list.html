@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div style="width: 100%" class="text-end">
+        <a href="/posts/add">
+            <button class="btn btn-primary">Добавить статью</button>
+        </a>
+    </div>
+
     {% for post in posts_list %}
         <h3>
             {{ post.title }}
