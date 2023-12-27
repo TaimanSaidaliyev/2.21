@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div style="width: 320px">
+            <img src="/media/{{ product.photo }}" style="width: 300px; height: 300px"/>
+
+            <p>Категория:
+                <span class="fw-bold text-primary">{{ product.category }}</span>
+            </p>
+            <p>Цена:
+                <span class="fw-bold text-primary">{{ product.price }}</span>
+            </p>
+            <p>Количество:
+                <span class="fw-bold text-primary">{{ product.quantity }}</span>
+            </p>
+        </div>
+        <div class="col-md-9">
+            <h1>{{ product.name }}</h1>
+            {{ product.description }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

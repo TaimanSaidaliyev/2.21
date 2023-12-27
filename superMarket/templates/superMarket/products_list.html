@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="w-auto text-end">
+    <a href="/products/add">
+        <button class="btn btn-primary">Добавить</button>
+    </a>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название</th>
+            <th scope="col">Категория</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Дата добавления</th>
+            <th scope="col text-center">Удаление</th>
+        </tr>
+    </thead>
+  <tbody>
+  {% for product in products %}
+    <tr>
+        <th scope="row">{{ product.pk }}</th>
+        <td>
+            <a href="/products/detail/{{ product.pk }}">
+                {{ product.name }}
+            </a>
+        </td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category.category_name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.date_added}}</td>
+        <td class="text-center">
+            <a href="/products/remove/{{ product.pk }}">
+                <button class="btn btn-danger btn-sm">X</button>
+            </a>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

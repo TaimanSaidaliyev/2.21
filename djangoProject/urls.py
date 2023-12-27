@@ -23,6 +23,7 @@ from Posts.views import show_list_posts, add_animal_breed
 urlpatterns = [
     path('admin/', admin.site.urls, name='main_page'),
     path('posts/', show_list_posts),
-    path('posts/add/', add_animal_breed)
+    path('posts/add/', add_animal_breed),
+    path('products/', include('superMarket.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
