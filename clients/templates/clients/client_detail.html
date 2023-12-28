@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div style="width: 260px">
+            <img src='/media/{{ client.photo }}' style="width: 250px" class="rounded-3"/>
+        </div>
+        <div class="col">
+            <h2>Карточка клиента</h2>
+            <table>
+                <tr>
+                    <td>
+                        <span class="text-primary fw-bold">Имя:</span>
+                    </td>
+                    <td>
+                        {{ client.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="text-primary fw-bold">Фамилия:</span>
+                    </td>
+                    <td>
+                        {{ client.surname }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="text-primary fw-bold">Адрес:</span>
+                    </td>
+                    <td>
+                        {{ client.address }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="text-primary fw-bold">Телефон:</span>
+                    </td>
+                    <td>
+                        {{ client.telephone }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pe-4">
+                        <span class="text-primary fw-bold">День рождения:</span>
+                    </td>
+                    <td>
+                        {{ client.birth_day }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pe-4">
+                        <span class="text-primary fw-bold">Категории:</span>
+                    </td>
+                    <td>
+                        {% for category in client.categories.all %}
+                            <span class="badge bg-info">
+                                {{ category.title }}
+                            </span>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="" style="width: 300px">
+            <h2>Хобби</h2>
+            {% for hobby in client.hobbies.all %}
+                <span class="badge bg-secondary">{{ hobby.title }}</span>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
