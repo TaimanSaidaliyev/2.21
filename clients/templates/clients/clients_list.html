@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ФИО</th>
+            <th scope="col">Адрес</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">День рождения</th>
+            <th scope="col">Хобби</th>
+            <th scope="col">Категории</th>
+        </tr>
+    </thead>
+  <tbody>
+  {% for client in clients_list %}
+    <tr>
+        <th scope="row">{{ client.pk }}</th>
+        <td>
+            <a href="/products/detail/{{ client.pk }}">
+                {{ client.name }} {{ client.surname }}
+            </a>
+        </td>
+        <td>{{ client.address }}</td>
+        <td>{{ client.telephone }}</td>
+        <td>{{ client.birth_day }}</td>
+        <td>
+            {% for hobby in client.hobbies.all %}
+                <span class="badge bg-secondary">{{ hobby.title }}</span>
+            {% endfor %}
+        </td>
+        <td>
+            {% for category in client.categories.all %}
+                <span class="badge bg-info">
+                    {{ category.title }}
+                </span>
+            {% endfor %}
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
